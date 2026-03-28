@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dxa Premium Loading Screen</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+</head>
+<body>
+    <div id="background-wrapper">
+        <video id="video-bg" loop muted playsinline poster="assets/bg.jpg">
+            <source src="assets/video.mp4" type="video/mp4">
+        </video>
+        <iframe id="youtube-bg" frameborder="0" allow="autoplay; encrypted-media" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;opacity:0;transition:opacity 1s ease;"></iframe>
+        <canvas id="particle-canvas"></canvas>
+        <div id="background-mesh"></div>
+    </div>
+
+    <header id="stats-bar" class="hidden">
+        <div class="stat-item"><i class="fas fa-users"></i> <span id="player-count">0 / 0</span></div>
+        <div class="stat-item"><i class="fas fa-clock"></i> <span id="server-time">00:00</span></div>
+        <div class="stat-item"><i class="fas fa-cloud"></i> <span id="server-weather">Sunny</span></div>
+    </header>
+
+    <main class="container">
+        <section class="loading-panel">
+            <div class="logo-container">
+                <img id="server-logo" src="assets/logo.png" alt="Server Logo" onerror="this.src='https://via.placeholder.com/200x200?text=LOGO'">
+            </div>
+
+            <header class="server-info">
+                <h1 id="server-name">DXA ROLEPLAY</h1>
+                <p id="server-tagline">Premium Roleplay Experience</p>
+                <div id="game-activation-container">
+                    <button id="start-game-btn" class="glow-btn">PLAY GAME</button>
+                </div>
+            </header>
+
+            <div class="features-slider">
+                <div class="feature-item active">
+                    <i class="fas fa-car-side"></i>
+                    <span>Custom Modded Vehicles</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Advanced Economy & Jobs</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-users"></i>
+                    <span>24/7 Active Support Team</span>
+                </div>
+            </div>
+
+            <div class="news-widget">
+                <div class="news-header">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>LATEST NEWS</span>
+                </div>
+                <div id="news-content">New server updates added! Check our discord channel for details.</div>
+            </div>
+
+            <div class="progress-section">
+                <div class="progress-info">
+                    <span id="load-status">Loading...</span>
+                    <span id="load-percent">0%</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div id="progress-bar">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <div class="social-item">
+                    <i class="fab fa-discord"></i>
+                    <span>discord.gg/dxa</span>
+                </div>
+                <div class="social-item">
+                    <i class="fas fa-globe"></i>
+                    <span>dxa-roleplay.com</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="minigame" class="glass-card hidden">
+            <div class="game-header">DXA FLAPPY</div>
+            <div id="game-prompt">PRESS SPACE TO JUMP!</div>
+            <div class="game-board-container">
+                <canvas id="flappy-canvas" width="600" height="300"></canvas>
+            </div>
+            <div id="game-status" style="margin-top: 15px;"></div>
+            <button id="close-game-btn" class="glow-btn" style="margin-top: 20px;">EXIT GAME</button>
+        </section>
+
+        <section class="music-player">
+            <canvas id="visualizer-canvas"></canvas>
+            <div class="music-info">
+                <i class="fas fa-music"></i>
+                <span id="track-name">Background Ambience</span>
+            </div>
+            <div class="music-controls">
+                <button id="toggle-music" class="control-btn">
+                    <svg id="music-icon" width="24" height="24" viewBox="0 0 24 24" fill="white">
+                        <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                    </svg>
+                </button>
+                <div class="volume-slider-container">
+                    <i class="fas fa-volume-down"></i>
+                    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="settings-toggle"><i class="fas fa-cog"></i></div>
+    <aside id="settings-panel">
+        <h3>SETTINGS</h3>
+        <div class="setting-item">
+            <span>Video Background</span>
+            <label class="switch"><input type="checkbox" id="toggle-video"><span class="slider"></span></label>
+        </div>
+        <div class="setting-item">
+            <span>Effects</span>
+            <label class="switch"><input type="checkbox" id="toggle-fx" checked><span class="slider"></span></label>
+        </div>
+        <div class="setting-item">
+            <span>Loading Smoothness</span>
+            <label class="switch"><input type="checkbox" id="toggle-smooth" checked><span class="slider"></span></label>
+        </div>
+    </aside>
+
+    <footer id="discord-ticker">
+        <div class="ticker-content">
+            <span class="ticker-item"><i class="fab fa-discord"></i> SERVER NEWS: New updates added! Check our discord channel for details.</span>
+            <span class="ticker-item"><i class="fas fa-star"></i> NEW: Level system updated.</span>
+            <span class="ticker-item"><i class="fas fa-shield-alt"></i> FAIR PLAY: New anti-cheat system activated.</span>
+        </div>
+    </footer>
+
+    <audio id="loading-music" loop>
+        <source src="assets/music.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
