@@ -1,3 +1,5 @@
+
+<img src="https://i.hizliresim.com/mt46qbs.png">
 # DXA Loading Screen
 
 A highly customizable and feature-rich loading screen for FiveM servers, designed to provide an engaging and immersive experience for players while they connect to your server. This loading screen allows for personalized branding, dynamic content, background music with visualizer, and even an interactive mini-game.
